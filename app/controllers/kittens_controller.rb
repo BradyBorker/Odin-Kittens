@@ -15,8 +15,26 @@ class KittensController < ApplicationController
         @kitten = Kitten.find(params[:id])
     end
 
-    def create 
+    def create
+        @kitten = Kitten.new(kitten_params)
+    
+        if @kitten.save
+            redirect_to kitten_path(@kitten)
+        else
+            flash[:alert] = 'Meow! Unable to create kitten!'
+            render :new, status: :unprocessable_entity
+        end
+    end
 
+    def update
+        @kitten = Kitten.find(params[:id])
+        
+        if @kitten.update(kitten_params)
+            redirect_to kitten_path(@kitten)
+        else
+            flash[:alert] = 'Meow! Unable to update kitten!'
+            render :edit, status: :unprocessable_entity
+        end
     end
 
     def destroy
