@@ -22,4 +22,10 @@ class KittensController < ApplicationController
     def destroy
 
     end
+
+    private
+
+    def kitten_params
+        params.require(:kitten).permit(:name, :age, :cuteness, :softness)
+    end
 end
