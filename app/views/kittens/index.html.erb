@@ -13,7 +13,10 @@
             <td><%= kitten.name %></td>
             <td><%= kitten.age %></td>
             <td><%= kitten.softness %></td>
-            <td><%= kitten.cuteness %></td> 
+            <td><%= kitten.cuteness %></td>
+            <td><%= link_to 'Show', kitten_path(kitten) %></td>
+            <td><%= link_to 'Edit', edit_kitten_path(kitten) %></td>
+            <td><%= link_to 'Destroy', kitten_path(kitten), data: { "turbo-method": :delete } %></td>
         </tr>
         <% end %>   
     </tbody>
