@@ -1,2 +1,6 @@
+<% flash.each do |key,value| %>
+    <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
 <div style='position: absolute; right: 0; top: 0; margin: 10px;'><%= link_to 'Destroy Kitten', kitten_path(@kitten), data: { "turbo-method": :delete } %></div>
+
 <%= render 'kitten_form', kitten: @kitten %>
