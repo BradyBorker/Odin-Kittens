@@ -19,6 +19,7 @@ class KittensController < ApplicationController
         @kitten = Kitten.new(kitten_params)
     
         if @kitten.save
+            flash[:notice] = 'Meow! Kitten has been created!'
             redirect_to kitten_path(@kitten)
         else
             flash.now[:alert] = 'Meow! Unable to create kitten!'
@@ -30,6 +31,7 @@ class KittensController < ApplicationController
         @kitten = Kitten.find(params[:id])
         
         if @kitten.update(kitten_params)
+            flash[:notice] = 'Meow! Kitten has been updated!'
             redirect_to kitten_path(@kitten)
         else
             flash.now[:alert] = 'Meow! Unable to update kitten!'
@@ -40,7 +42,8 @@ class KittensController < ApplicationController
     def destroy
         @kitten = Kitten.find(params[:id])
         @kitten.destroy
-        flash[:notice] = 'Kitten has been destroyed'
+
+        flash[:notice] = 'Meow! Kitten has been destroyed'
         redirect_to root_path
     end
 
